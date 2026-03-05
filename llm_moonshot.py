@@ -121,7 +121,7 @@ def register_models(register):
             )
         )
 
-def fetch_cached_json(url, path, cache_timeout):
+def fetch_cached_json(url, path, cache_timeout, **kwargs):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -136,14 +136,14 @@ def fetch_cached_json(url, path, cache_timeout):
     headers = {"Authorization": f"Bearer {key}"}
 
     try:
-        response = httpx.get(url, headers=headers, follow_redirects=True)
+        response = httpx.get(url, headers=headers, follow_redirects=True, timeout=1.5, **kwargs)
         response.raise_for_status()
         data = response.json()
         with open(path, "w") as f:
             json.dump(data, f)
         return data
-    except httpx.HTTPError:
+    except Exception:
         if path.is_file():
             with open(path, "r") as f:
                 return json.load(f)
-        raise
+        return {"data": []}
