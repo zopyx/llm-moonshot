@@ -1,5 +1,5 @@
 # zopyx.llm-moonshot
-LLM plugin for Moonshot AI’s models
+LLM plugin for Moonshot AI's models
 
 [![PyPI](https://img.shields.io/pypi/v/zopyx.llm-moonshot.svg)](https://pypi.org/project/zopyx.llm-moonshot/0.3.2/)
 [![Changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue.svg)](https://github.com/zopyx/llm-moonshot/blob/main/CHANGELOG.md)
@@ -24,7 +24,7 @@ llm install zopyx.llm-moonshot
 
 ## Configuration
 
-You’ll need an API key from Moonshot. Grab one at [platform.moonshot.cn](https://platform.moonshot.cn).
+You'll need an API key from Moonshot. Grab one at [platform.moonshot.cn](https://platform.moonshot.cn).
 
 Set secret key:
 ```bash
@@ -36,12 +36,18 @@ Enter key: <paste key here>
 
 ## Usage
 
-List what’s on the menu:
+List what's on the menu:
 ```bash
 llm models list
 ```
-You’ll see something like:
+You'll see something like:
 ```
+[[[cog
+import cog
+from llm_moonshot._models import DEFAULT_MOONSHOT_MODEL_IDS
+for model_id in DEFAULT_MOONSHOT_MODEL_IDS:
+    cog.outl(f"Moonshot: moonshot/{model_id}")
+]]]
 Moonshot: moonshot/kimi-latest
 Moonshot: moonshot/moonshot-v1-auto
 Moonshot: moonshot/moonshot-v1-128k-vision-preview
@@ -52,7 +58,8 @@ Moonshot: moonshot/moonshot-v1-8k-vision-preview
 Moonshot: moonshot/moonshot-v1-8k
 Moonshot: moonshot/kimi-thinking-preview
 Moonshot: moonshot/moonshot-v1-32k
-...
+Moonshot: moonshot/kimi-k2-thinking
+[[[end]]]
 ```
 
 Fire up a chat:
@@ -64,7 +71,7 @@ Chatting with  moonshot/kimi-k2-0711-preview
 Type 'exit' or 'quit' to exit
 Type '!multi' to enter multiple lines, then '!end' to finish
 > yo moonie
-yo! what’s up, moonie?
+yo! what's up, moonie?
 >
 ```
 
@@ -117,13 +124,29 @@ Now:
 llm -m kimi "write a haiku about the AI chatbot Sidney is misbehaving"
 ```
 
+## Troubleshooting
+
+**Models don't appear in `llm models list`**
+- Make sure you have set a Moonshot API key with `llm keys set moonshot`.
+- The plugin caches the model catalog for one hour. If the API was unreachable,
+  it falls back to a built-in catalog.
+
+**Streaming connection dropped**
+- The plugin automatically retries without streaming when Moonshot closes the
+  connection mid-stream. This is a known upstream behavior and is handled
+  transparently.
+
+**401 Unauthorized**
+- Double-check your API key at https://platform.moonshot.cn.
+
 ## Development
 
 Clone, sync, build:
 ```bash
 git clone https://github.com/zopyx/llm-moonshot.git
 cd llm-moonshot
-uv sync --extra test
+uv sync --extra dev
+make check
 make dist
 ```
 
@@ -131,3 +154,5 @@ To publish using `.pypirc` with `twine`:
 ```bash
 make upload
 ```
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.

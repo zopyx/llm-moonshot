@@ -5,7 +5,20 @@ description = "Run prompts against LLMs hosted by Moonshot"
 readme = "README.md"
 authors = [{ name = "NickMystic" }]
 requires-python = ">=3.9"
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
+keywords = ["llm", "moonshot", "kimi", "cli", "plugin"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
 dependencies = ["llm>=0.22", "httpx", "httpx-sse", "rich>=13.0"]
 
 [project.urls]
@@ -18,11 +31,71 @@ Issues = "https://github.com/zopyx/llm-moonshot/issues"
 moonshot = "llm_moonshot"
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-httpx", "pytest-asyncio", "cogapp"]
+dev = [
+    "cogapp",
+    "mypy>=1.0",
+    "pre-commit",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "pytest-httpx",
+    "ruff>=0.5.0",
+]
+test = [
+    "pytest",
+    "pytest-httpx",
+    "pytest-asyncio",
+    "pytest-cov",
+    "cogapp",
+]
 
 [build-system]
 requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-py-modules = ["llm_moonshot"]
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+llm_moonshot = ["py.typed"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "N",
+    "UP",
+    "B",
+    "C4",
+    "SIM",
+    "PTH",
+]
+ignore = ["E501"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src/llm_moonshot"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 80

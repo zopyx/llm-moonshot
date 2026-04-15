@@ -1,6 +1,9 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 permissions:
   contents: read
@@ -21,8 +24,13 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       run: uv python install ${{ matrix.python-version }}
     - name: Sync dependencies
-      run: uv sync --extra test --locked
+      run: uv sync --extra dev --locked
     - name: Run tests
+      run: uv run pytest --cov
+    - name: Run linters
       run: |
-        uv run pytest
-        uv run python -m cogapp --check README.md
+        uv run ruff check src tests
+        uv run ruff format --check src tests
+        uv run mypy src
+    - name: Check cog
+      run: uv run python -m cogapp --check README.md
