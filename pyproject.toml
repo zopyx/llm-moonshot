@@ -18,7 +18,7 @@ Issues = "https://github.com/ghostofpokemon/llm-moonshot/issues"
 moonshot = "llm_moonshot"
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-httpx", "pytest-asyncio"]
+test = ["pytest", "pytest-httpx", "pytest-asyncio", "cogapp"]
 
 [build-system]
 requires = ["setuptools>=77", "wheel"]

@@ -23,7 +23,7 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       run: uv python install ${{ matrix.python-version }}
     - name: Sync dependencies
-      run: uv sync --extra test
+      run: uv sync --extra test --locked
     - name: Run tests
       run: uv run pytest
   deploy:
@@ -42,7 +42,7 @@ jobs:
     - name: Set up Python
       run: uv python install 3.14
     - name: Sync build dependencies
-      run: uv sync
+      run: uv sync --locked
     - name: Build
       run: uv build
     - name: Publish
