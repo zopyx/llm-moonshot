@@ -1,11 +1,17 @@
 # zopyx.llm-moonshot
 LLM plugin for Moonshot AI’s models
 
-[![PyPI](https://img.shields.io/pypi/v/zopyx.llm-moonshot.svg)](https://pypi.org/project/zopyx.llm-moonshot/0.3.1/)
-[![Changelog](https://img.shields.io/github/v/release/ghostofpokemon/llm-moonshot?include_prereleases&label=changelog)](https://github.com/ghostofpokemon/llm-moonshot/releases)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ghostofpokemon/llm-moonshot/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/zopyx.llm-moonshot.svg)](https://pypi.org/project/zopyx.llm-moonshot/0.3.2/)
+[![Changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue.svg)](https://github.com/zopyx/llm-moonshot/blob/main/CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/zopyx/llm-moonshot/blob/main/LICENSE)
 
 [LLM](https://llm.datasette.io/) plugin for models hosted by [Moonshot AI](https://platform.moonshot.ai/).
+
+## Project Status
+
+This package is maintained as the `zopyx.llm-moonshot` fork of the original `llm-moonshot` project.
+
+The fork keeps the plugin usable in current environments and aligns packaging, CI/CD, and release workflow with the `zopyx` distribution. The post-fork changes and the reasons for them are documented in [CHANGELOG.md](./CHANGELOG.md).
 
 ## Installation
 
@@ -113,10 +119,15 @@ llm -m kimi "write a haiku about the AI chatbot Sidney is misbehaving"
 
 ## Development
 
-Clone, venv, deps—same dance:
+Clone, sync, build:
 ```bash
-git clone https://github.com/ghostofpokemon/llm-moonshot.git
+git clone https://github.com/zopyx/llm-moonshot.git
 cd llm-moonshot
-python3 -m venv venv
-source venv/bin/activate
-pip install -e .
+uv sync --extra test
+make dist
+```
+
+To publish using `.pypirc` with `twine`:
+```bash
+make upload
+```
