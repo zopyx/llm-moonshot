@@ -1,6 +1,6 @@
 [project]
 name = "zopyx.llm-moonshot"
-version = "0.3.7"
+version = "0.3.8"
 description = "Run prompts against LLMs hosted by Moonshot"
 readme = "README.md"
 authors = [{ name = "NickMystic" }]

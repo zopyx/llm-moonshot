@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.3.7 - 2026-04-15
+## 0.3.8 - 2026-04-15
 
-- Bumped the release version to `0.3.7`.
+- Bumped the release version to `0.3.8`.
 
 ## 0.3.5 - 2026-04-15
 
