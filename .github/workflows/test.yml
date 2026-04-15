@@ -25,4 +25,4 @@ jobs:
     - name: Run tests
       run: |
         uv run pytest
-        uv run cog --check README.md
+        uv run python -m cogapp --check README.md
