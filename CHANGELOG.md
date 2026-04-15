@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.4 - 2026-04-15
+
+- Maintenance release with no functional changes.
+
+## 0.3.3 - 2026-04-15
+
+- Refactored into a proper `src/` layout package with type hints and explicit error handling.
+- Added `ruff`, `mypy`, `pytest-cov`, and `pre-commit` to the development toolchain.
+- Expanded test suite to 19 tests with 90% code coverage.
+- Auto-generated README model list using `cog`.
+- Added `CONTRIBUTING.md` and a troubleshooting section to the README.
+- Improved CI/CD workflows with lint gates and reduced duplicate runs.
+
 ## 0.3.2 - 2026-04-15
 
 This release aligns the `zopyx.llm-moonshot` fork with the current package name and documents the fork-specific maintenance work.

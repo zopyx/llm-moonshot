@@ -1,15 +1,14 @@
 [project]
 name = "zopyx.llm-moonshot"
-version = "0.3.2"
+version = "0.3.4"
 description = "Run prompts against LLMs hosted by Moonshot"
 readme = "README.md"
 authors = [{ name = "NickMystic" }]
 requires-python = ">=3.9"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
 keywords = ["llm", "moonshot", "kimi", "cli", "plugin"]
 classifiers = [
     "Development Status :: 4 - Beta",
-    "License :: OSI Approved :: Apache Software License",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
