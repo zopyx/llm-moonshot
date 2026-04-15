@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.7 - 2026-04-15
+
+- Bumped the release version to `0.3.7`.
+
 ## 0.3.5 - 2026-04-15
 
 - Fixed the `src/` layout packaging regression so CI and isolated builds include the plugin package correctly.
