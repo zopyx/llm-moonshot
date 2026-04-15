@@ -1,7 +1,7 @@
 # zopyx.llm-moonshot
 LLM plugin for Moonshot AI's models
 
-[![PyPI](https://img.shields.io/pypi/v/zopyx.llm-moonshot.svg)](https://pypi.org/project/zopyx.llm-moonshot/0.3.4/)
+[![PyPI](https://img.shields.io/pypi/v/zopyx.llm-moonshot.svg)](https://pypi.org/project/zopyx.llm-moonshot/0.3.5/)
 [![Changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue.svg)](https://github.com/zopyx/llm-moonshot/blob/main/CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/zopyx/llm-moonshot/blob/main/LICENSE)
 
