@@ -1,7 +1,7 @@
-# llm-moonshot
+# zopyx.llm-moonshot
 LLM plugin for Moonshot AI’s models
 
-[![PyPI](https://img.shields.io/pypi/v/llm-moonshot.svg)](https://pypi.org/project/llm-moonshot/0.3.1/)
+[![PyPI](https://img.shields.io/pypi/v/zopyx.llm-moonshot.svg)](https://pypi.org/project/zopyx.llm-moonshot/0.3.1/)
 [![Changelog](https://img.shields.io/github/v/release/ghostofpokemon/llm-moonshot?include_prereleases&label=changelog)](https://github.com/ghostofpokemon/llm-moonshot/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ghostofpokemon/llm-moonshot/blob/main/LICENSE)
 
@@ -13,7 +13,7 @@ First, [install the LLM command-line utility](https://llm.datasette.io/en/stable
 
 Now install this plugin in the same environment as LLM:
 ```bash
-llm install llm-moonshot
+llm install zopyx.llm-moonshot
 ```
 
 ## Configuration

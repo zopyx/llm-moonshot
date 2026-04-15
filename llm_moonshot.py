@@ -8,12 +8,27 @@ import httpx
 from rich.console import Console
 from rich.style import Style
 
+DEFAULT_MOONSHOT_MODEL_IDS = [
+    "kimi-latest",
+    "moonshot-v1-auto",
+    "moonshot-v1-128k-vision-preview",
+    "kimi-k2-0711-preview",
+    "moonshot-v1-128k",
+    "moonshot-v1-32k-vision-preview",
+    "moonshot-v1-8k-vision-preview",
+    "moonshot-v1-8k",
+    "kimi-thinking-preview",
+    "moonshot-v1-32k",
+    "kimi-k2-thinking",
+]
+
 def get_moonshot_models():
-    return fetch_cached_json(
+    data = fetch_cached_json(
         url="https://api.moonshot.ai/v1/models",
         path=llm.user_dir() / "moonshot_models.json",
         cache_timeout=3600,
     ).get("data", [])
+    return data or [{"id": model_id} for model_id in DEFAULT_MOONSHOT_MODEL_IDS]
 
 class MoonshotChat(Chat):
     needs_key = "moonshot"
@@ -107,10 +122,6 @@ class MoonshotChat(Chat):
 
 @llm.hookimpl
 def register_models(register):
-    key = llm.get_key("", "moonshot", "MOONSHOT_KEY")
-    if not key:
-        return
-
     models = get_moonshot_models()
     for model_def in models:
         register(
